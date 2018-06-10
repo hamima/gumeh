@@ -1,0 +1,96 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myResurceLabel" jhiTranslate="gumehApp.resurce.home.createOrEditLabel">Create or edit a Resurce</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!resurce.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="resurce.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.type" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="resurce.type" id="field_type"  required>
+                <option value="Poet">{{'gumehApp.ResourceType.Poet' | translate}}</option>
+                <option value="Novel">{{'gumehApp.ResourceType.Novel' | translate}}</option>
+                <option value="Book">{{'gumehApp.ResourceType.Book' | translate}}</option>
+                <option value="Song">{{'gumehApp.ResourceType.Song' | translate}}</option>
+                <option value="Site">{{'gumehApp.ResourceType.Site' | translate}}</option>
+                <option value="Movie">{{'gumehApp.ResourceType.Movie' | translate}}</option>
+                <option value="Person">{{'gumehApp.ResourceType.Person' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="resurce.title" required/>
+            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.publishYear" for="field_publishYear">Publish Year</label>
+            <input type="number" class="form-control" name="publishYear" id="field_publishYear"
+                [(ngModel)]="resurce.publishYear" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.noPosts" for="field_noPosts">No Posts</label>
+            <input type="number" class="form-control" name="noPosts" id="field_noPosts"
+                [(ngModel)]="resurce.noPosts" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.creator" for="field_creator">Creator</label>
+            <input type="text" class="form-control" name="creator" id="field_creator"
+                [(ngModel)]="resurce.creator" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="resurce.link" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.activated" for="field_activated">Activated</label>
+            <input type="checkbox" class="form-control" name="activated" id="field_activated"
+                [(ngModel)]="resurce.activated" />
+            <div [hidden]="!(editForm.controls.activated?.dirty && editForm.controls.activated?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.activated?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.resurce.certified" for="field_certified">Certified</label>
+            <input type="checkbox" class="form-control" name="certified" id="field_certified"
+                [(ngModel)]="resurce.certified" />
+            <div [hidden]="!(editForm.controls.certified?.dirty && editForm.controls.certified?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.certified?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

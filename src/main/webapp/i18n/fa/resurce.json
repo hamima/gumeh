@@ -1,0 +1,30 @@
+
+{
+    "gumehApp": {
+        "resurce" : {
+            "home": {
+                "title": "Resurces",
+                "createLabel": "Create a new Resurce",
+                "createOrEditLabel": "Create or edit a Resurce",
+                "search": "Search for Resurce"
+            },
+            "created": "A new Resurce is created with identifier {{ param }}",
+            "updated": "A Resurce is updated with identifier {{ param }}",
+            "deleted": "A Resurce is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Resurce {{ id }}?"
+            },
+            "detail": {
+                "title": "Resurce"
+            },
+            "type": "Type",
+            "title": "Title",
+            "publishYear": "Publish Year",
+            "noPosts": "No Posts",
+            "creator": "Creator",
+            "link": "Link",
+            "activated": "Activated",
+            "certified": "Certified"
+        }
+    }
+}

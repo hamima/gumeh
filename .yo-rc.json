@@ -34,7 +34,8 @@
     "enableTranslation": true,
     "nativeLanguage": "fa",
     "languages": [
-      "fa"
+      "fa",
+      "en"
     ]
   }
 }

@@ -2,11 +2,10 @@ package it.techn.gumeh.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
-import org.springframework.data.elasticsearch.annotations.Document;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -31,6 +30,12 @@ public class Tag implements Serializable {
 
     @Column(name = "no_posts")
     private Integer noPosts;
+
+    @Column(name = "no_followers")
+    private Integer noFollowers;
+
+    @Column(name = "related_tags")
+    private String relatedTags;
 
     @Column(name = "encyclopedia_link")
     private String encyclopediaLink;
@@ -68,6 +73,32 @@ public class Tag implements Serializable {
 
     public void setNoPosts(Integer noPosts) {
         this.noPosts = noPosts;
+    }
+
+    public Integer getNoFollowers() {
+        return noFollowers;
+    }
+
+    public Tag noFollowers(Integer noFollowers) {
+        this.noFollowers = noFollowers;
+        return this;
+    }
+
+    public void setNoFollowers(Integer noFollowers) {
+        this.noFollowers = noFollowers;
+    }
+
+    public String getRelatedTags() {
+        return relatedTags;
+    }
+
+    public Tag relatedTags(String relatedTags) {
+        this.relatedTags = relatedTags;
+        return this;
+    }
+
+    public void setRelatedTags(String relatedTags) {
+        this.relatedTags = relatedTags;
     }
 
     public String getEncyclopediaLink() {
@@ -110,6 +141,8 @@ public class Tag implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", noPosts=" + getNoPosts() +
+            ", noFollowers=" + getNoFollowers() +
+            ", relatedTags='" + getRelatedTags() + "'" +
             ", encyclopediaLink='" + getEncyclopediaLink() + "'" +
             "}";
     }

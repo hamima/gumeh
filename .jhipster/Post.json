@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "category",
+            "otherEntityName": "resurce",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "title"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "resourceBrief",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "noLikes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tagStr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userBrief",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180617135623",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "post",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

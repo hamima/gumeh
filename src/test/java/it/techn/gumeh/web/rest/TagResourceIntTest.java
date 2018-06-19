@@ -48,6 +48,12 @@ public class TagResourceIntTest {
     private static final Integer DEFAULT_NO_POSTS = 1;
     private static final Integer UPDATED_NO_POSTS = 2;
 
+    private static final Integer DEFAULT_NO_FOLLOWERS = 1;
+    private static final Integer UPDATED_NO_FOLLOWERS = 2;
+
+    private static final String DEFAULT_RELATED_TAGS = "AAAAAAAAAA";
+    private static final String UPDATED_RELATED_TAGS = "BBBBBBBBBB";
+
     private static final String DEFAULT_ENCYCLOPEDIA_LINK = "AAAAAAAAAA";
     private static final String UPDATED_ENCYCLOPEDIA_LINK = "BBBBBBBBBB";
 
@@ -100,6 +106,8 @@ public class TagResourceIntTest {
         Tag tag = new Tag()
             .title(DEFAULT_TITLE)
             .noPosts(DEFAULT_NO_POSTS)
+            .noFollowers(DEFAULT_NO_FOLLOWERS)
+            .relatedTags(DEFAULT_RELATED_TAGS)
             .encyclopediaLink(DEFAULT_ENCYCLOPEDIA_LINK);
         return tag;
     }
@@ -128,6 +136,8 @@ public class TagResourceIntTest {
         Tag testTag = tagList.get(tagList.size() - 1);
         assertThat(testTag.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTag.getNoPosts()).isEqualTo(DEFAULT_NO_POSTS);
+        assertThat(testTag.getNoFollowers()).isEqualTo(DEFAULT_NO_FOLLOWERS);
+        assertThat(testTag.getRelatedTags()).isEqualTo(DEFAULT_RELATED_TAGS);
         assertThat(testTag.getEncyclopediaLink()).isEqualTo(DEFAULT_ENCYCLOPEDIA_LINK);
 
         // Validate the Tag in Elasticsearch
@@ -187,6 +197,8 @@ public class TagResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tag.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].noPosts").value(hasItem(DEFAULT_NO_POSTS)))
+            .andExpect(jsonPath("$.[*].noFollowers").value(hasItem(DEFAULT_NO_FOLLOWERS)))
+            .andExpect(jsonPath("$.[*].relatedTags").value(hasItem(DEFAULT_RELATED_TAGS.toString())))
             .andExpect(jsonPath("$.[*].encyclopediaLink").value(hasItem(DEFAULT_ENCYCLOPEDIA_LINK.toString())));
     }
 
@@ -203,6 +215,8 @@ public class TagResourceIntTest {
             .andExpect(jsonPath("$.id").value(tag.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.noPosts").value(DEFAULT_NO_POSTS))
+            .andExpect(jsonPath("$.noFollowers").value(DEFAULT_NO_FOLLOWERS))
+            .andExpect(jsonPath("$.relatedTags").value(DEFAULT_RELATED_TAGS.toString()))
             .andExpect(jsonPath("$.encyclopediaLink").value(DEFAULT_ENCYCLOPEDIA_LINK.toString()));
     }
 
@@ -229,6 +243,8 @@ public class TagResourceIntTest {
         updatedTag
             .title(UPDATED_TITLE)
             .noPosts(UPDATED_NO_POSTS)
+            .noFollowers(UPDATED_NO_FOLLOWERS)
+            .relatedTags(UPDATED_RELATED_TAGS)
             .encyclopediaLink(UPDATED_ENCYCLOPEDIA_LINK);
         TagDTO tagDTO = tagMapper.toDto(updatedTag);
 
@@ -243,6 +259,8 @@ public class TagResourceIntTest {
         Tag testTag = tagList.get(tagList.size() - 1);
         assertThat(testTag.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTag.getNoPosts()).isEqualTo(UPDATED_NO_POSTS);
+        assertThat(testTag.getNoFollowers()).isEqualTo(UPDATED_NO_FOLLOWERS);
+        assertThat(testTag.getRelatedTags()).isEqualTo(UPDATED_RELATED_TAGS);
         assertThat(testTag.getEncyclopediaLink()).isEqualTo(UPDATED_ENCYCLOPEDIA_LINK);
 
         // Validate the Tag in Elasticsearch
@@ -305,6 +323,8 @@ public class TagResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tag.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].noPosts").value(hasItem(DEFAULT_NO_POSTS)))
+            .andExpect(jsonPath("$.[*].noFollowers").value(hasItem(DEFAULT_NO_FOLLOWERS)))
+            .andExpect(jsonPath("$.[*].relatedTags").value(hasItem(DEFAULT_RELATED_TAGS.toString())))
             .andExpect(jsonPath("$.[*].encyclopediaLink").value(hasItem(DEFAULT_ENCYCLOPEDIA_LINK.toString())));
     }
 

@@ -1,0 +1,11 @@
+{
+    "gumehApp": {
+        "ActivityType" : {
+            "null": "",
+            "Like": "Like",
+            "Comment": "Comment",
+            "Report": "Report",
+            "Share": "Share"
+        }
+    }
+}

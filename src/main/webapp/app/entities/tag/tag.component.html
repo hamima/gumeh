@@ -32,6 +32,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="title"><span jhiTranslate="gumehApp.tag.title">Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="noPosts"><span jhiTranslate="gumehApp.tag.noPosts">No Posts</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="noFollowers"><span jhiTranslate="gumehApp.tag.noFollowers">No Followers</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="relatedTags"><span jhiTranslate="gumehApp.tag.relatedTags">Related Tags</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="encyclopediaLink"><span jhiTranslate="gumehApp.tag.encyclopediaLink">Encyclopedia Link</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -41,6 +43,8 @@
                 <td><a [routerLink]="['../tag', tag.id ]">{{tag.id}}</a></td>
                 <td>{{tag.title}}</td>
                 <td>{{tag.noPosts}}</td>
+                <td>{{tag.noFollowers}}</td>
+                <td>{{tag.relatedTags}}</td>
                 <td>{{tag.encyclopediaLink}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

@@ -30,6 +30,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="no_followers" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="related_tags" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="encyclopedia_link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

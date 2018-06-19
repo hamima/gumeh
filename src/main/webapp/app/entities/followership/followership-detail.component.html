@@ -1,0 +1,44 @@
+
+<div *ngIf="followership">
+    <h2><span jhiTranslate="gumehApp.followership.detail.title">Followership</span> {{followership.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gumehApp.followership.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{followership.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.followership.reason">Reason</span></dt>
+        <dd>
+            <span>{{followership.reason}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.followership.comment">Comment</span></dt>
+        <dd>
+            <span>{{followership.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.followership.user">User</span></dt>
+        <dd>
+            {{followership.userLogin}}
+        </dd>
+        <dt><span jhiTranslate="gumehApp.followership.tag">Tag</span></dt>
+        <dd>
+            <div *ngIf="followership.tagId">
+                <a [routerLink]="['/tag', followership.tagId]">{{followership.tagTitle}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'followership/'+ followership.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

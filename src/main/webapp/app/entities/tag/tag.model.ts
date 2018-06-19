@@ -5,6 +5,8 @@ export class Tag implements BaseEntity {
         public id?: number,
         public title?: string,
         public noPosts?: number,
+        public noFollowers?: number,
+        public relatedTags?: string,
         public encyclopediaLink?: string,
     ) {
     }

@@ -1,0 +1,68 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFollowershipLabel" jhiTranslate="gumehApp.followership.home.createOrEditLabel">Create or edit a Followership</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!followership.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="followership.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.followership.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="followership.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.followership.reason" for="field_reason">Reason</label>
+            <input type="text" class="form-control" name="reason" id="field_reason"
+                [(ngModel)]="followership.reason" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.followership.comment" for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                [(ngModel)]="followership.comment" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.followership.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="followership.userId"  required>
+                <option *ngIf="!editForm.value.user" [ngValue]="null" selected></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.followership.tag" for="field_tag">Tag</label>
+            <select class="form-control" id="field_tag" name="tag" [(ngModel)]="followership.tagId"  required>
+                <option *ngIf="!editForm.value.tag" [ngValue]="null" selected></option>
+                <option [ngValue]="tagOption.id" *ngFor="let tagOption of tags; trackBy: trackTagById">{{tagOption.title}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.tag?.dirty && editForm.controls.tag?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.tag?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

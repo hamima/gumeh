@@ -1,12 +1,12 @@
 package it.techn.gumeh.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import io.github.jhipster.web.util.ResponseUtil;
 import it.techn.gumeh.service.TagService;
+import it.techn.gumeh.service.dto.TagDTO;
 import it.techn.gumeh.web.rest.errors.BadRequestAlertException;
 import it.techn.gumeh.web.rest.util.HeaderUtil;
 import it.techn.gumeh.web.rest.util.PaginationUtil;
-import it.techn.gumeh.service.dto.TagDTO;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -19,12 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing Tag.

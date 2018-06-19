@@ -1,0 +1,52 @@
+
+<div *ngIf="post">
+    <h2><span jhiTranslate="gumehApp.post.detail.title">Post</span> {{post.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gumehApp.post.resourceBrief">Resource Brief</span></dt>
+        <dd>
+            <span>{{post.resourceBrief}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.noLikes">No Likes</span></dt>
+        <dd>
+            <span>{{post.noLikes}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.tagStr">Tag Str</span></dt>
+        <dd>
+            <span>{{post.tagStr}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.userBrief">User Brief</span></dt>
+        <dd>
+            <span>{{post.userBrief}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.link">Link</span></dt>
+        <dd>
+            <span>{{post.link}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.text">Text</span></dt>
+        <dd>
+            <span>{{post.text}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.post.category">Category</span></dt>
+        <dd>
+            <div *ngIf="post.categoryId">
+                <a [routerLink]="['/resurce', post.categoryId]">{{post.categoryTitle}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'post/'+ post.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

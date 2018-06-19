@@ -1,0 +1,60 @@
+
+<div *ngIf="activity">
+    <h2><span jhiTranslate="gumehApp.activity.detail.title">Activity</span> {{activity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gumehApp.activity.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gumehApp.ActivityType.' + activity.type}}">{{activity.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{activity.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.comment">Comment</span></dt>
+        <dd>
+            <span>{{activity.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{activity.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.reportReason">Report Reason</span></dt>
+        <dd>
+            <span>{{activity.reportReason}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.userBrief">User Brief</span></dt>
+        <dd>
+            <span>{{activity.userBrief}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.activityDesc">Activity Desc</span></dt>
+        <dd>
+            <span>{{activity.activityDesc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.user">User</span></dt>
+        <dd>
+            {{activity.userLogin}}
+        </dd>
+        <dt><span jhiTranslate="gumehApp.activity.post">Post</span></dt>
+        <dd>
+            <div *ngIf="activity.postId">
+                <a [routerLink]="['/post', activity.postId]">{{activity.postId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'activity/'+ activity.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

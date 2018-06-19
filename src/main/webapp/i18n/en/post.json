@@ -1,0 +1,29 @@
+
+{
+    "gumehApp": {
+        "post" : {
+            "home": {
+                "title": "Posts",
+                "createLabel": "Create a new Post",
+                "createOrEditLabel": "Create or edit a Post",
+                "search": "Search for Post"
+            },
+            "created": "A new Post is created with identifier {{ param }}",
+            "updated": "A Post is updated with identifier {{ param }}",
+            "deleted": "A Post is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Post {{ id }}?"
+            },
+            "detail": {
+                "title": "Post"
+            },
+            "resourceBrief": "Resource Brief",
+            "noLikes": "No Likes",
+            "tagStr": "Tag Str",
+            "userBrief": "User Brief",
+            "link": "Link",
+            "text": "Text",
+            "category": "Category"
+        }
+    }
+}

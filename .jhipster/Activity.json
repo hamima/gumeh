@@ -1,0 +1,65 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipName": "post",
+            "otherEntityName": "post",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "ActivityType",
+            "fieldValues": "Like,Comment,Report,Share",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "reportReason",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userBrief",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activityDesc",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180617140425",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "activity",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

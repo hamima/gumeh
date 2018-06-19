@@ -1,0 +1,27 @@
+
+{
+    "gumehApp": {
+        "followership" : {
+            "home": {
+                "title": "Followerships",
+                "createLabel": "Create a new Followership",
+                "createOrEditLabel": "Create or edit a Followership",
+                "search": "Search for Followership"
+            },
+            "created": "A new Followership is created with identifier {{ param }}",
+            "updated": "A Followership is updated with identifier {{ param }}",
+            "deleted": "A Followership is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Followership {{ id }}?"
+            },
+            "detail": {
+                "title": "Followership"
+            },
+            "createdAt": "Created At",
+            "reason": "Reason",
+            "comment": "Comment",
+            "user": "User",
+            "tag": "Tag"
+        }
+    }
+}

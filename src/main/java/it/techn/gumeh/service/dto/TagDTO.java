@@ -17,6 +17,10 @@ public class TagDTO implements Serializable {
 
     private Integer noPosts;
 
+    private Integer noFollowers;
+
+    private String relatedTags;
+
     private String encyclopediaLink;
 
     public Long getId() {
@@ -41,6 +45,22 @@ public class TagDTO implements Serializable {
 
     public void setNoPosts(Integer noPosts) {
         this.noPosts = noPosts;
+    }
+
+    public Integer getNoFollowers() {
+        return noFollowers;
+    }
+
+    public void setNoFollowers(Integer noFollowers) {
+        this.noFollowers = noFollowers;
+    }
+
+    public String getRelatedTags() {
+        return relatedTags;
+    }
+
+    public void setRelatedTags(String relatedTags) {
+        this.relatedTags = relatedTags;
     }
 
     public String getEncyclopediaLink() {
@@ -78,6 +98,8 @@ public class TagDTO implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", noPosts=" + getNoPosts() +
+            ", noFollowers=" + getNoFollowers() +
+            ", relatedTags='" + getRelatedTags() + "'" +
             ", encyclopediaLink='" + getEncyclopediaLink() + "'" +
             "}";
     }

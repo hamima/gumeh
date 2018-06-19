@@ -1,0 +1,101 @@
+<div>
+    <h2>
+        <span jhiTranslate="gumehApp.activity.home.title">Activities</span>
+        <button class="btn btn-primary float-right jh-create-entity create-activity" [routerLink]="['/', { outlets: { popup: ['activity-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gumehApp.activity.home.createLabel">
+            Create new Activity
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gumehApp.activity.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="activities">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="gumehApp.activity.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="gumehApp.activity.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="comment"><span jhiTranslate="gumehApp.activity.comment">Comment</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="deleted"><span jhiTranslate="gumehApp.activity.deleted">Deleted</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reportReason"><span jhiTranslate="gumehApp.activity.reportReason">Report Reason</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userBrief"><span jhiTranslate="gumehApp.activity.userBrief">User Brief</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="activityDesc"><span jhiTranslate="gumehApp.activity.activityDesc">Activity Desc</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userLogin"><span jhiTranslate="gumehApp.activity.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="postId"><span jhiTranslate="gumehApp.activity.post">Post</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let activity of activities ;trackBy: trackId">
+                <td><a [routerLink]="['../activity', activity.id ]">{{activity.id}}</a></td>
+                <td jhiTranslate="{{'gumehApp.ActivityType.' + activity.type}}">{{activity.type}}</td>
+                <td>{{activity.createdAt | date:'medium'}}</td>
+                <td>{{activity.comment}}</td>
+                <td>{{activity.deleted}}</td>
+                <td>{{activity.reportReason}}</td>
+                <td>{{activity.userBrief}}</td>
+                <td>{{activity.activityDesc}}</td>
+                <td>
+                    {{activity.userLogin}}
+                </td>
+                <td>
+                    <div *ngIf="activity.postId">
+                        <a [routerLink]="['../post', activity.postId  ]" >{{activity.postId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../activity', activity.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'activity/'+ activity.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'activity/'+ activity.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="activities && activities.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPostLabel" jhiTranslate="gumehApp.post.home.createOrEditLabel">Create or edit a Post</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!post.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="post.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.resourceBrief" for="field_resourceBrief">Resource Brief</label>
+            <input type="text" class="form-control" name="resourceBrief" id="field_resourceBrief"
+                [(ngModel)]="post.resourceBrief" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.noLikes" for="field_noLikes">No Likes</label>
+            <input type="number" class="form-control" name="noLikes" id="field_noLikes"
+                [(ngModel)]="post.noLikes" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.tagStr" for="field_tagStr">Tag Str</label>
+            <input type="text" class="form-control" name="tagStr" id="field_tagStr"
+                [(ngModel)]="post.tagStr" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.userBrief" for="field_userBrief">User Brief</label>
+            <input type="text" class="form-control" name="userBrief" id="field_userBrief"
+                [(ngModel)]="post.userBrief" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="post.link" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.text" for="field_text">Text</label>
+            <input type="text" class="form-control" name="text" id="field_text"
+                [(ngModel)]="post.text" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gumehApp.post.category" for="field_category">Category</label>
+            <select class="form-control" id="field_category" name="category" [(ngModel)]="post.categoryId"  required>
+                <option *ngIf="!editForm.value.category" [ngValue]="null" selected></option>
+                <option [ngValue]="resurceOption.id" *ngFor="let resurceOption of resurces; trackBy: trackResurceById">{{resurceOption.title}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.category?.dirty && editForm.controls.category?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.category?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

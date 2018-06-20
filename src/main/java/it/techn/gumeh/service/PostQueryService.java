@@ -3,8 +3,8 @@ package it.techn.gumeh.service;
 
 import io.github.jhipster.service.QueryService;
 import it.techn.gumeh.domain.Post;
-import it.techn.gumeh.domain.metamodels.Post_;
-import it.techn.gumeh.domain.metamodels.Resurce_;
+import it.techn.gumeh.domain.Post_;
+import it.techn.gumeh.domain.Resurce_;
 import it.techn.gumeh.repository.PostRepository;
 import it.techn.gumeh.repository.search.PostSearchRepository;
 import it.techn.gumeh.service.dto.PostCriteria;

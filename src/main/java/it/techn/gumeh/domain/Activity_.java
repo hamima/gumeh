@@ -1,8 +1,5 @@
-package it.techn.gumeh.domain.metamodels;
+package it.techn.gumeh.domain;
 
-import it.techn.gumeh.domain.Activity;
-import it.techn.gumeh.domain.Post;
-import it.techn.gumeh.domain.User;
 import it.techn.gumeh.domain.enumeration.ActivityType;
 
 import javax.persistence.metamodel.SingularAttribute;

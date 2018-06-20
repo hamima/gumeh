@@ -60,6 +60,8 @@
         <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
         <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
         <swagger-codegen-maven-plugin.version>2.2.3</swagger-codegen-maven-plugin.version>
+        <!--<hibernate-jpamodelgen.version>5.3.1.Final</hibernate-jpamodelgen.version>-->
+
 
         <!-- Sonar properties -->
         <sonar.exclusions>src/main/webapp/content/**/*.*, src/main/webapp/i18n/*.js, target/www/**/*.*</sonar.exclusions>
@@ -83,6 +85,8 @@
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
         <!-- jhipster-needle-maven-property -->
+
+        <start-class>it.techn.gumeh.GumehApp</start-class>
     </properties>
 
     <dependencyManagement>
@@ -95,10 +99,23 @@
                 <scope>import</scope>
             </dependency>
             <!-- jhipster-needle-maven-add-dependency-management -->
+<!--
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+-->
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
@@ -384,14 +401,33 @@
                             <version>${mapstruct.version}</version>
                         </path>
                         <!-- For JPA static metamodel generation -->
+<!--
                         <path>
                             <groupId>org.hibernate</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
                             <version>${hibernate.version}</version>
                         </path>
+-->
 
                     </annotationProcessorPaths>
+<!--
+                    <annotationProcessors>
+                        <annotationProcessor>
+
+                        </annotationProcessor>
+                    </annotationProcessors>
+-->
+
                 </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-jpamodelgen</artifactId>
+                        <version>${hibernate.version}</version>
+                        <optional>true</optional>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -713,6 +749,59 @@
         </pluginManagement>
     </build>
     <profiles>
+<!--
+        <profile>
+            <id>hibernate-dependency</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment.id>hibernate-dependency</environment.id>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-jpamodelgen</artifactId>
+                    <scope>compile</scope>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>hibernate-processor</id>
+            <properties>
+                <environment.id>hibernate-processor</environment.id>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.bsc.maven</groupId>
+                        <artifactId>maven-processor-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>process</goal>
+                                </goals>
+                                <phase>generate-sources</phase>
+                                <configuration>
+                                    <processors>
+                                        <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                                    </processors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.hibernate</groupId>
+                                <artifactId>hibernate-jpamodelgen</artifactId>
+                                <version>${hibernate.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+-->
         <profile>
             <id>no-liquibase</id>
             <properties>
@@ -1088,6 +1177,14 @@
                     <artifactId>mapstruct-processor</artifactId>
                     <version>${mapstruct.version}</version>
                 </dependency>
+<!--
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-jpamodelgen</artifactId>
+                    <version>${hibernate-jpamodelgen.version}</version>
+                    <optional>true</optional>
+                </dependency>
+-->
             </dependencies>
         </profile>
         <!-- jhipster-needle-maven-add-profile -->

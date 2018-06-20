@@ -3,9 +3,9 @@ package it.techn.gumeh.service;
 
 import io.github.jhipster.service.QueryService;
 import it.techn.gumeh.domain.Followership;
-import it.techn.gumeh.domain.metamodels.Followership_;
-import it.techn.gumeh.domain.metamodels.Tag_;
-import it.techn.gumeh.domain.metamodels.User_;
+import it.techn.gumeh.domain.Followership_;
+import it.techn.gumeh.domain.Tag_;
+import it.techn.gumeh.domain.User_;
 import it.techn.gumeh.repository.FollowershipRepository;
 import it.techn.gumeh.repository.search.FollowershipSearchRepository;
 import it.techn.gumeh.service.dto.FollowershipCriteria;

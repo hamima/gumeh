@@ -3,9 +3,9 @@ package it.techn.gumeh.service;
 
 import io.github.jhipster.service.QueryService;
 import it.techn.gumeh.domain.Activity;
-import it.techn.gumeh.domain.metamodels.Activity_;
-import it.techn.gumeh.domain.metamodels.Post_;
-import it.techn.gumeh.domain.metamodels.User_;
+import it.techn.gumeh.domain.Activity_;
+import it.techn.gumeh.domain.Post_;
+import it.techn.gumeh.domain.User_;
 import it.techn.gumeh.repository.ActivityRepository;
 import it.techn.gumeh.repository.search.ActivitySearchRepository;
 import it.techn.gumeh.service.dto.ActivityCriteria;

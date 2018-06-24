@@ -1,9 +1,12 @@
 package it.techn.gumeh.service.impl;
 
+import it.techn.gumeh.domain.User;
+import it.techn.gumeh.security.NoLoginUserException;
 import it.techn.gumeh.service.ResurceService;
 import it.techn.gumeh.domain.Resurce;
 import it.techn.gumeh.repository.ResurceRepository;
 import it.techn.gumeh.repository.search.ResurceSearchRepository;
+import it.techn.gumeh.service.UserService;
 import it.techn.gumeh.service.dto.ResurceDTO;
 import it.techn.gumeh.service.mapper.ResurceMapper;
 import org.slf4j.Logger;
@@ -13,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -31,10 +36,13 @@ public class ResurceServiceImpl implements ResurceService {
 
     private final ResurceSearchRepository resurceSearchRepository;
 
-    public ResurceServiceImpl(ResurceRepository resurceRepository, ResurceMapper resurceMapper, ResurceSearchRepository resurceSearchRepository) {
+    private final UserService userService;
+
+    public ResurceServiceImpl(ResurceRepository resurceRepository, ResurceMapper resurceMapper, ResurceSearchRepository resurceSearchRepository, UserService userService) {
         this.resurceRepository = resurceRepository;
         this.resurceMapper = resurceMapper;
         this.resurceSearchRepository = resurceSearchRepository;
+        this.userService = userService;
     }
 
     /**
@@ -47,6 +55,12 @@ public class ResurceServiceImpl implements ResurceService {
     public ResurceDTO save(ResurceDTO resurceDTO) {
         log.debug("Request to save Resurce : {}", resurceDTO);
         Resurce resurce = resurceMapper.toEntity(resurceDTO);
+        Optional<User> currentUserOptional = userService.getUserWithAuthorities();
+        User currentUser = null;
+        if(currentUserOptional.isPresent())
+            currentUser = currentUserOptional.get();
+        else throw new NoLoginUserException("No user is log in right now");
+        resurce.setCreator(currentUser.getFirstName() + "-" + currentUser.getLastName());
         resurce = resurceRepository.save(resurce);
         ResurceDTO result = resurceMapper.toDto(resurce);
         resurceSearchRepository.save(resurce);

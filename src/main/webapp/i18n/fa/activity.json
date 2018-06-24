@@ -3,29 +3,29 @@
     "gumehApp": {
         "activity" : {
             "home": {
-                "title": "Activities",
-                "createLabel": "Create a new Activity",
-                "createOrEditLabel": "Create or edit a Activity",
-                "search": "Search for Activity"
+                "title": "فعالیت ها",
+                "createLabel": "ساخت یک فعالیت جدید",
+                "createOrEditLabel": "ساخت یا ویرایش فعالیت",
+                "search": "جستجوی فعالیت ها"
             },
-            "created": "A new Activity is created with identifier {{ param }}",
-            "updated": "A Activity is updated with identifier {{ param }}",
-            "deleted": "A Activity is deleted with identifier {{ param }}",
+            "created": "یک فعالیت حدید ساخته شده است با شناسه{{ param }}",
+            "updated": "یک فعالیت ویرایش شده است با شناسه{{ param }}",
+            "deleted": "یک فعالیت حذف شده است با شناسه{{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Activity {{ id }}?"
+                "question": "آیا از حذف فعالیت مطمئنی؟ {{ id }}?"
             },
             "detail": {
-                "title": "Activity"
+                "title": "فعالیت"
             },
-            "type": "Type",
-            "createdAt": "Created At",
-            "comment": "Comment",
-            "deleted": "Deleted",
-            "reportReason": "Report Reason",
-            "userBrief": "User Brief",
-            "activityDesc": "Activity Desc",
-            "user": "User",
-            "post": "Post"
+            "type": "نوع",
+            "createdAt": "زمان ایجاد",
+            "comment": "کامنت",
+            "deleted": "حذف شده است؟",
+            "reportReason": "دلیل گزارش",
+            "userBrief": "خلاصه کاربر",
+            "activityDesc": "توضیحات فعالیت",
+            "user": "کاربر",
+            "post": "پست"
         }
     }
 }

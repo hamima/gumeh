@@ -3,25 +3,25 @@
     "gumehApp": {
         "tag" : {
             "home": {
-                "title": "Tags",
-                "createLabel": "Create a new Tag",
-                "createOrEditLabel": "Create or edit a Tag",
-                "search": "Search for Tag"
+                "title": "تگ ها",
+                "createLabel": "ساخت یک تگ جدید",
+                "createOrEditLabel": "ساخت یا ویرایش یک تگ",
+                "search": "جستجوی تگ ها"
             },
-            "created": "A new Tag is created with identifier {{ param }}",
-            "updated": "A Tag is updated with identifier {{ param }}",
-            "deleted": "A Tag is deleted with identifier {{ param }}",
+            "created": "یک تگ جدید ساخته شده است با شناسه{{ param }}",
+            "updated": "یک تگ ویرایش شده است با شناسه{{ param }}",
+            "deleted": "یک تگ حذف شده است با شناسه {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Tag {{ id }}?"
+                "question": "آیا از حدف تگ مطمئنی؟ {{ id }}?"
             },
             "detail": {
-                "title": "Tag"
+                "title": "تگ"
             },
-            "title": "Title",
-            "noPosts": "No Posts",
-            "noFollowers": "No Followers",
-            "relatedTags": "Related Tags",
-            "encyclopediaLink": "Encyclopedia Link"
+            "title": "عنوان",
+            "noPosts": "تعداد پست ها",
+            "noFollowers": "تعداد دنبال کنندگان",
+            "relatedTags": "تگ های مربوطه",
+            "encyclopediaLink": "لینک دایره المعارف"
         }
     }
 }

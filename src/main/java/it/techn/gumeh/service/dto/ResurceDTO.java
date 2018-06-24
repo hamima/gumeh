@@ -1,10 +1,11 @@
 package it.techn.gumeh.service.dto;
 
 
-import javax.validation.constraints.*;
+import it.techn.gumeh.domain.enumeration.ResourceType;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
-import it.techn.gumeh.domain.enumeration.ResourceType;
 
 /**
  * A DTO for the Resurce entity.
@@ -21,7 +22,7 @@ public class ResurceDTO implements Serializable {
 
     private Integer publishYear;
 
-    private Integer noPosts;
+    private Integer noPosts = 0;
 
     private String creator;
 

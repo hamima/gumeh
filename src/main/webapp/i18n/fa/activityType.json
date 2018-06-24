@@ -2,10 +2,10 @@
     "gumehApp": {
         "ActivityType" : {
             "null": "",
-            "Like": "Like",
-            "Comment": "Comment",
-            "Report": "Report",
-            "Share": "Share"
+            "Like": "لایک",
+            "Comment": "کامنت",
+            "Report": "گزارش",
+            "Share": "به اشتراک گذاری"
         }
     }
 }

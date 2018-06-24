@@ -1,14 +1,14 @@
 {
     "gumehApp": {
         "ResourceType" : {
-            "null": "",
-            "Poet": "Poet",
-            "Novel": "Novel",
-            "Book": "Book",
-            "Song": "Song",
-            "Site": "Site",
-            "Movie": "Movie",
-            "Person": "Person"
+            "Poet": "شعر",
+            "Novel": "رمان",
+            "Book": "کتاب",
+            "Song": "ترانه",
+            "Site": "سایت",
+            "Movie": "فیلم",
+            "Person": "کوت افراد",
+            "null": "نامعلوم"
         }
     }
 }

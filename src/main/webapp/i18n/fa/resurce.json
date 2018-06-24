@@ -3,28 +3,28 @@
     "gumehApp": {
         "resurce" : {
             "home": {
-                "title": "Resurces",
-                "createLabel": "Create a new Resurce",
-                "createOrEditLabel": "Create or edit a Resurce",
-                "search": "Search for Resurce"
+                "title": "منابع",
+                "createLabel": "ساخت یک منبع جدید",
+                "createOrEditLabel": "ساخت یا ویرایش یک منبع",
+                "search": "جستجوی منبع"
             },
-            "created": "A new Resurce is created with identifier {{ param }}",
-            "updated": "A Resurce is updated with identifier {{ param }}",
-            "deleted": "A Resurce is deleted with identifier {{ param }}",
+            "created": "یک منبع جدید ساخته شده است با شناسه {{ param }}",
+            "updated": "یک منبع ویرایش شده است با شناسه {{ param }}",
+            "deleted": "یک منبع حذف شده است با شناسه {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Resurce {{ id }}?"
+                "question": "آیا از حذف منبع مطمئنی؟{{ id }}?"
             },
             "detail": {
-                "title": "Resurce"
+                "title": "منبع"
             },
-            "type": "Type",
-            "title": "Title",
-            "publishYear": "Publish Year",
-            "noPosts": "No Posts",
-            "creator": "Creator",
-            "link": "Link",
-            "activated": "Activated",
-            "certified": "Certified"
+            "type": "نوع",
+            "title": "عنوان",
+            "publishYear": "سال انتشار",
+            "noPosts": "تعداد پست ها",
+            "creator": "کاربر سازنده",
+            "link": "لینک",
+            "activated": "فعال است؟",
+            "certified": "تایید شده است؟"
         }
     }
 }

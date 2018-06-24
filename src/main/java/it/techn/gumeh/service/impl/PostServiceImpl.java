@@ -1,9 +1,15 @@
 package it.techn.gumeh.service.impl;
 
-import it.techn.gumeh.service.PostService;
 import it.techn.gumeh.domain.Post;
+import it.techn.gumeh.domain.Resurce;
+import it.techn.gumeh.domain.Tag;
+import it.techn.gumeh.domain.User;
 import it.techn.gumeh.repository.PostRepository;
+import it.techn.gumeh.repository.ResurceRepository;
+import it.techn.gumeh.repository.TagRepository;
 import it.techn.gumeh.repository.search.PostSearchRepository;
+import it.techn.gumeh.service.PostService;
+import it.techn.gumeh.service.UserService;
 import it.techn.gumeh.service.dto.PostDTO;
 import it.techn.gumeh.service.mapper.PostMapper;
 import org.slf4j.Logger;
@@ -13,8 +19,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * Service Implementation for managing Post.
@@ -31,10 +40,21 @@ public class PostServiceImpl implements PostService {
 
     private final PostSearchRepository postSearchRepository;
 
-    public PostServiceImpl(PostRepository postRepository, PostMapper postMapper, PostSearchRepository postSearchRepository) {
+    private final UserService userService;
+
+    private final TagRepository tagRepository;
+
+    private final ResurceRepository resurceRepository;
+
+    public PostServiceImpl(PostRepository postRepository, PostMapper postMapper,
+                           PostSearchRepository postSearchRepository, UserService userService,
+                           TagRepository tagRepository, ResurceRepository resurceRepository) {
         this.postRepository = postRepository;
         this.postMapper = postMapper;
         this.postSearchRepository = postSearchRepository;
+        this.userService = userService;
+        this.tagRepository = tagRepository;
+        this.resurceRepository = resurceRepository;
     }
 
     /**
@@ -47,7 +67,30 @@ public class PostServiceImpl implements PostService {
     public PostDTO save(PostDTO postDTO) {
         log.debug("Request to save Post : {}", postDTO);
         Post post = postMapper.toEntity(postDTO);
+        Optional<User> currentUserOptional = userService.getUserWithAuthorities();
+        User currentUser = null;
+        if(currentUserOptional.isPresent()) currentUser = currentUserOptional.get();
+        post.setUserBrief(currentUser.getFirstName() + " " + currentUser.getLastName());
+
         post = postRepository.save(post);
+
+        String tagStr = post.getTagStr();
+        String[] tags = tagStr.split(",");
+        List<Tag> tagList = new ArrayList<>();
+        for(String tag: tags) {
+            Optional<Tag> tagOptional = tagRepository.findByTitle(tag);
+            if(tagOptional.isPresent()){
+                Tag tagObj = tagOptional.get();
+                tagObj.setNoPosts(tagObj.getNoPosts() + 1);
+                tagList.add(tagObj);
+            }
+        }
+        tagRepository.save(tagList);
+
+        Resurce category = post.getCategory();
+        category.setNoPosts(category.getNoPosts()+1);
+        resurceRepository.save(category);
+
         PostDTO result = postMapper.toDto(post);
         postSearchRepository.save(post);
         return result;

@@ -3,27 +3,27 @@
     "gumehApp": {
         "post" : {
             "home": {
-                "title": "Posts",
-                "createLabel": "Create a new Post",
-                "createOrEditLabel": "Create or edit a Post",
-                "search": "Search for Post"
+                "title": "پست ها",
+                "createLabel": "یک پست جدید ایجاد کن",
+                "createOrEditLabel": "یک پست ایجاد یا ویرایش کن",
+                "search": "جستجوی میان پست ها"
             },
-            "created": "A new Post is created with identifier {{ param }}",
-            "updated": "A Post is updated with identifier {{ param }}",
-            "deleted": "A Post is deleted with identifier {{ param }}",
+            "created": "یک پست جدید ایجاد شده است با شناسه {{ param }}",
+            "updated": "یک پست ویرایش شده است با شناسه {{ param }}",
+            "deleted": "یک پست حذف شده است با شناسه {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Post {{ id }}?"
+                "question": "آیا از حذف پست اطمینان داری؟ {{ id }}?"
             },
             "detail": {
-                "title": "Post"
+                "title": "پست"
             },
-            "resourceBrief": "Resource Brief",
-            "noLikes": "No Likes",
-            "tagStr": "Tag Str",
-            "userBrief": "User Brief",
-            "link": "Link",
-            "text": "Text",
-            "category": "Category"
+            "resourceBrief": "خلاصه منبع",
+            "noLikes": "تعداد لایک",
+            "tagStr": "تگ ها",
+            "userBrief": "کاربر",
+            "link": "لینک",
+            "text": "متن",
+            "category": "منبع"
         }
     }
 }

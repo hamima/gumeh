@@ -3,7 +3,7 @@
     "gumehApp": {
         "followership" : {
             "home": {
-                "title": "Followerships",
+                "title": "دنبال کردن ها",
                 "createLabel": "Create a new Followership",
                 "createOrEditLabel": "Create or edit a Followership",
                 "search": "Search for Followership"

@@ -47,8 +47,8 @@
                 <td>{{post.noLikes}}</td>
                 <td>{{post.tagStr}}</td>
                 <td>{{post.userBrief}}</td>
-                <td>{{post.link}}</td>
-                <td>{{post.text}}</td>
+                <td class="ellipsis">{{post.link}}</td>
+                <td class="ellipsis">{{post.text}}</td>
                 <td>
                     <div *ngIf="post.categoryId">
                         <a [routerLink]="['../resurce', post.categoryId  ]" >{{post.categoryTitle}}</a>

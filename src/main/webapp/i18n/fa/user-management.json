@@ -14,10 +14,10 @@
         "detail": {
             "title": "کاربر"
         },
-        "login": "ورود",
+        "login": "نام کاربری",
         "firstName": "نام",
         "lastName": "نام خانوادگی",
-        "email": "رایانامه",
+        "email": "ایمیل",
         "activated": "فعال شده",
         "deactivated": "غیر فعال شده",
         "profiles": "پروفایل ها",

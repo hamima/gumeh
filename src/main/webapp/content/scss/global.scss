@@ -58,6 +58,13 @@ Generic styles
     padding: 10px;
 }
 
+.ellipsis {
+    max-width: 80px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .w-40 {
     width: 40% !important;
 }

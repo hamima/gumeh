@@ -69,8 +69,11 @@ public class PostServiceImpl implements PostService {
         Post post = postMapper.toEntity(postDTO);
         Optional<User> currentUserOptional = userService.getUserWithAuthorities();
         User currentUser = null;
-        if(currentUserOptional.isPresent()) currentUser = currentUserOptional.get();
-        post.setUserBrief(currentUser.getFirstName() + " " + currentUser.getLastName());
+        if(currentUserOptional.isPresent()) {
+            currentUser = currentUserOptional.get();
+            post.setUserBrief(currentUser.getFirstName() + " " + currentUser.getLastName());
+        } else
+            post.setUserBrief("Anonymous");
 
         post = postRepository.save(post);
 
@@ -88,8 +91,10 @@ public class PostServiceImpl implements PostService {
         tagRepository.save(tagList);
 
         Resurce category = post.getCategory();
-        category.setNoPosts(category.getNoPosts()+1);
-        resurceRepository.save(category);
+        if(category != null) {
+            category.setNoPosts(category.getNoPosts() + 1);
+            resurceRepository.save(category);
+        }
 
         PostDTO result = postMapper.toDto(post);
         postSearchRepository.save(post);

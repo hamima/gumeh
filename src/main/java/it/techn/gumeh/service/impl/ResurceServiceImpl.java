@@ -1,11 +1,10 @@
 package it.techn.gumeh.service.impl;
 
-import it.techn.gumeh.domain.User;
-import it.techn.gumeh.security.NoLoginUserException;
-import it.techn.gumeh.service.ResurceService;
 import it.techn.gumeh.domain.Resurce;
+import it.techn.gumeh.domain.User;
 import it.techn.gumeh.repository.ResurceRepository;
 import it.techn.gumeh.repository.search.ResurceSearchRepository;
+import it.techn.gumeh.service.ResurceService;
 import it.techn.gumeh.service.UserService;
 import it.techn.gumeh.service.dto.ResurceDTO;
 import it.techn.gumeh.service.mapper.ResurceMapper;
@@ -16,10 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.Optional;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * Service Implementation for managing Resurce.
@@ -57,10 +55,12 @@ public class ResurceServiceImpl implements ResurceService {
         Resurce resurce = resurceMapper.toEntity(resurceDTO);
         Optional<User> currentUserOptional = userService.getUserWithAuthorities();
         User currentUser = null;
-        if(currentUserOptional.isPresent())
+        if(currentUserOptional.isPresent()) {
             currentUser = currentUserOptional.get();
-        else throw new NoLoginUserException("No user is log in right now");
-        resurce.setCreator(currentUser.getFirstName() + "-" + currentUser.getLastName());
+//        else throw new NoLoginUserException("No user is log in right now");
+
+            resurce.setCreator(currentUser.getFirstName() + "-" + currentUser.getLastName());
+        } else resurce.setCreator("Anonymous");
         resurce = resurceRepository.save(resurce);
         ResurceDTO result = resurceMapper.toDto(resurce);
         resurceSearchRepository.save(resurce);

@@ -1,16 +1,14 @@
 package it.techn.gumeh.domain;
 
+import it.techn.gumeh.domain.enumeration.ResourceType;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
-import org.springframework.data.elasticsearch.annotations.Document;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
-
-import it.techn.gumeh.domain.enumeration.ResourceType;
 
 /**
  * A Resurce.
@@ -40,7 +38,7 @@ public class Resurce implements Serializable {
     private Integer publishYear;
 
     @Column(name = "no_posts")
-    private Integer noPosts;
+    private Integer noPosts = 0;
 
     @Column(name = "creator")
     private String creator;

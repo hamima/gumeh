@@ -89,6 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .headers()
             .frameOptions()
             .disable()
+//            .sameOrigin()
         .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
